@@ -29,7 +29,8 @@ class Product(models.Model):
 
     def __str__(self):
         return "product info"
-    
+
+# 頁尾模型
 class Footer(models.Model):
     about_us = models.TextField()
     contact_us = models.TextField()

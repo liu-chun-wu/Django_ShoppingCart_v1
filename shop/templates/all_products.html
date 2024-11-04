@@ -10,14 +10,14 @@
 </head>
 
 <body>
-    <!-- Header -->
+    <!-- 引入標頭 -->
     {% include "header.html" %}
 
-    <!-- Main Content -->
+    <!-- 主要內容區域 -->
     <main>
         <div class="all_products_product-list">
             {% for product in products %}
-            <!-- 當某商品的數量為0時，不要顯示在這個頁面上 -->
+            <!-- 當某商品的數量為0時，不顯示在頁面上 -->
             {% if product.product_quantity > 0 %}
             <div class="all_products_product-item">
                 <h2 class="all_products_h2">{{ product.product_name }}</h2>
@@ -25,11 +25,15 @@
                 <p><strong>數量:</strong> {{ product.product_quantity }}</p>
                 <p><strong>價格:</strong> ${{ product.product_price }}</p>
 
+                <!-- 用戶選擇購買的數量 -->
                 <label for="quantity_{{ product.id }}" class="all_products_label">選擇數量:</label>
                 <input type="number" id="quantity_{{ product.id }}" min="1" max="{{ product.product_quantity }}"
                     value="1">
+
+                <!-- 加入購物車按鈕，點擊時調用 addToCart 函數 -->
                 <button class="all_products_button"
-                    onclick="addToCart('{{ product.product_name }}', '{{ product.introduction }}', '{{ product.product_quantity }}', '{{ product.product_price }}', document.getElementById('quantity_{{ product.id }}').value)">加入購物車
+                    onclick="addToCart('{{ product.product_name }}', '{{ product.introduction }}', '{{ product.product_quantity }}', '{{ product.product_price }}', document.getElementById('quantity_{{ product.id }}').value)">
+                    加入購物車
                 </button>
             </div>
             {% endif %}
@@ -37,34 +41,41 @@
         </div>
     </main>
 
-    <!-- Footer -->
+    <!-- 引入頁尾 -->
     {% include "footer.html" %}
 
-    <!-- script -->
+    <!-- 購物車相關腳本 -->
     <script>
+        /**
+         * 將商品加入購物車
+         * @param {string} name - 商品名稱
+         * @param {string} introduction - 商品介紹
+         * @param {number} availableQuantity - 商品庫存數量
+         * @param {number} price - 商品價格
+         * @param {number} selectedQuantity - 使用者選擇的商品數量
+         */
         function addToCart(name, introduction, availableQuantity, price, selectedQuantity) {
             selectedQuantity = parseInt(selectedQuantity);
 
-            // 確認現有的選擇不超過庫存
+            // 取得當前購物車中的商品列表
             const existingProducts = getCookie("selectedProducts") || [];
             const existingProductIndex = existingProducts.findIndex(product => product.name === name);
 
-            let totalQuantityInCart = selectedQuantity; // 預設為目前新增的數量
-
+            // 計算商品在購物車中的總數量（當前選擇數量 + 已存在的數量）
+            let totalQuantityInCart = selectedQuantity;
             if (existingProductIndex !== -1) {
-                // 若商品已存在於購物車中，則將已存在的數量與新選的數量相加
                 totalQuantityInCart += parseInt(existingProducts[existingProductIndex].quantity);
             }
 
-            // 檢查總數量是否超過庫存
+            // 檢查選擇的數量是否超過庫存
             if (totalQuantityInCart > availableQuantity) {
                 alert(`您選擇的數量 (${selectedQuantity}) 加上已在購物車中的數量 (${existingProducts[existingProductIndex] ? existingProducts[existingProductIndex].quantity : 0}) 超過庫存數量 (${availableQuantity})！`);
                 return;
             }
 
-            // 更新或新增商品到購物車
+            // 如果商品已存在於購物車中，則更新數量；否則新增商品至購物車
             if (existingProductIndex !== -1) {
-                existingProducts[existingProductIndex].quantity = totalQuantityInCart; // 更新數量
+                existingProducts[existingProductIndex].quantity = totalQuantityInCart;
             } else {
                 const productInfo = {
                     name: name,
@@ -76,10 +87,16 @@
                 existingProducts.push(productInfo);
             }
 
+            // 將購物車商品資訊儲存至 cookie
             document.cookie = `selectedProducts=${JSON.stringify(existingProducts)}; path=/;`;
             alert(`商品 "${name}" 已經被選中，總數量為 ${totalQuantityInCart} ，已儲存到購物車中！`);
         }
 
+        /**
+         * 從 cookie 中取得指定名稱的值
+         * @param {string} name - cookie 名稱
+         * @returns {Array} - 若成功解析，返回 JSON 陣列；若失敗則返回空陣列
+         */
         function getCookie(name) {
             const value = `; ${document.cookie}`;
             const parts = value.split(`; ${name}=`);
@@ -94,6 +111,7 @@
             return [];
         }
 
+        // 初始化頁面時顯示目前選中的商品
         const selectedProducts = getCookie("selectedProducts");
         if (selectedProducts.length > 0) {
             console.log("選中的商品資訊:", selectedProducts);

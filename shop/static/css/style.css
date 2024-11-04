@@ -1,24 +1,26 @@
-/* 通用 */
+/* ===================== 通用樣式 ===================== */
 body {
     height: 100%;
     margin: 0;
     font-family: Arial, sans-serif;
     background-color: #f0f2f5;
+    /* 設定整體背景色 */
 }
 
-/* 標題樣式 */
+/* ===================== 標題樣式 ===================== */
 h1,
 h2,
 h3 {
     color: #333;
     text-align: center;
     margin: 20px;
+    /* 標題統一樣式，包含顏色、對齊及間距 */
 }
 
-/* 表單和輸入框樣式 */
+/* ===================== 表單和輸入框樣式 ===================== */
 input[type="text"],
 input[type="number"],
-input[type='password'],
+input[type="password"],
 textarea {
     width: 100%;
     padding: 10px;
@@ -28,6 +30,7 @@ textarea {
     text-align: center;
     box-sizing: border-box;
     transition: border 0.3s;
+    /* 統一設置表單輸入框樣式 */
 }
 
 input[type="text"]:focus,
@@ -35,6 +38,7 @@ input[type="number"]:focus,
 textarea:focus {
     border: 1px solid #4CAF50;
     outline: none;
+    /* 聚焦時改變邊框顏色 */
 }
 
 form {
@@ -44,6 +48,7 @@ form {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     max-width: 600px;
     margin: 0 auto;
+    /* 表單容器樣式，包含陰影、背景色和居中設置 */
 }
 
 label {
@@ -51,15 +56,13 @@ label {
     margin: 10px 0 5px;
     font-weight: bold;
     color: #555;
+    /* 表單標籤樣式 */
 }
 
-/*=================================================*/
-
-/* header.html */
-
+/* ===================== header.html ===================== */
 .admin_product_h2 {
     margin-top: 6vh !important;
-    /* 根據 header 的實際高度調整 */
+    /* 根據 header 的高度調整 */
 }
 
 .header_header {
@@ -71,20 +74,22 @@ label {
     z-index: 1000;
     background-color: #3498db;
     padding: 20px 0;
+    /* 固定標頭，設置背景色與層級 */
 }
 
 .header_a {
     color: white;
     text-decoration: none;
-    padding: 0px;
+    padding: 0;
     border-radius: 5px;
     transition: background-color 0.3s;
     margin-right: 20px;
+    /* 導航連結的樣式，包含背景過渡效果 */
 }
 
 .header_a:hover {
     background-color: #2980b9;
-    /* 背景顏色變深 */
+    /* 導航連結懸停效果 */
 }
 
 .header_ul {
@@ -93,11 +98,10 @@ label {
     padding: 0;
     justify-content: center;
     align-items: center;
+    /* 水平排列的導覽列表 */
 }
 
-/*=================================================*/
-
-/* footer.html */
+/* ===================== footer.html ===================== */
 .footer_footer {
     position: fixed;
     bottom: 0;
@@ -107,6 +111,7 @@ label {
     z-index: 1000;
     background-color: #3498db;
     padding: 10px 0;
+    /* 固定底部，設置背景色與層級 */
 }
 
 .footer_div {
@@ -114,6 +119,7 @@ label {
     justify-content: center;
     align-items: center;
     font-size: 14px;
+    /* 底部容器樣式 */
 }
 
 .footer_p {
@@ -121,11 +127,10 @@ label {
     margin-right: 14px;
     cursor: pointer;
     transition: color 0.3s;
+    /* 底部文字樣式，包含懸停效果 */
 }
 
-/*=================================================*/
-
-/* front_page.html */
+/* ===================== front_page.html ===================== */
 .front_page_main {
     flex: 1;
     display: flex;
@@ -133,17 +138,17 @@ label {
     align-items: center;
     min-height: 85vh;
     font-size: 75px;
+    /* 前頁內容樣式，置中顯示 */
 }
 
-/*=================================================*/
-
-/* all_products.html */
+/* ===================== all_products.html ===================== */
 .all_products_product-list {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     margin-top: 70px;
     padding-bottom: 50px;
+    /* 商品列表樣式 */
 }
 
 .all_products_product-item {
@@ -155,6 +160,7 @@ label {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     text-align: left;
     background-color: #f9f9f9;
+    /* 單個商品項目樣式 */
 }
 
 /* 商品項目在不同螢幕寬度下的佈局 */
@@ -175,12 +181,14 @@ label {
     margin: 10px 0 5px;
     font-weight: bold;
     color: #555;
+    /* 商品標籤樣式 */
 }
 
 .all_products_h2 {
     color: #333;
     text-align: center;
     margin: 20px 0;
+    /* 商品頁標題樣式 */
 }
 
 .all_products_button {
@@ -193,23 +201,22 @@ label {
     cursor: pointer;
     font-weight: bold;
     transition: background-color 0.3s;
+    /* 商品按鈕樣式 */
 }
 
-/*=================================================*/
-
-/*shopcart.html*/
+/* ===================== shopcart.html ===================== */
 .shopcart_cart-container {
     width: 60%;
     margin: auto;
+    /* 購物車容器樣式，居中 */
 }
 
 .shopcart_product-row {
     display: flex;
-    align-items: center;
-    display: flex;
     justify-content: space-between;
     padding: 10px;
     border-bottom: 1px solid #ccc;
+    /* 購物車中每個商品行樣式 */
 }
 
 .shopcart_product-info {
@@ -219,6 +226,7 @@ label {
     text-align: center;
     font-size: 20px;
     white-space: nowrap;
+    /* 商品資訊樣式 */
 }
 
 .shopcart_total {
@@ -226,6 +234,7 @@ label {
     text-align: center;
     padding: 20px;
     font-size: 50px;
+    /* 顯示總金額的樣式 */
 }
 
 .shopcart_cart-button-container {
@@ -233,15 +242,11 @@ label {
     justify-content: center;
     gap: 10px;
     padding: 10px 0;
+    /* 購物車按鈕容器樣式 */
 }
 
 .shopcart_cart-button {
-    width: auto;
-    /* 设置宽度为内容自适应 */
-    max-width: 100%;
-    /* 防止按钮溢出容器 */
     padding: 10px 20px;
-    /* 缩小左右的内边距 */
     background-color: #4CAF50;
     color: white;
     border: none;
@@ -250,155 +255,49 @@ label {
     font-weight: bold;
     transition: background-color 0.3s;
     white-space: nowrap;
-    /* 避免文字换行 */
+    /* 購物車按鈕樣式 */
 }
 
 .shopcart_cart-button:hover {
     background-color: #45a049;
+    /* 購物車按鈕懸停效果 */
 }
 
-/*=================================================*/
-
-/*admin.html*/
+/* ===================== admin.html ===================== */
 .admin_product-container {
     width: 70%;
     margin: 0 auto;
-    /* 使容器水平居中 */
     display: flex;
     justify-content: center;
     padding-top: 60px;
+    /* 管理商品容器樣式 */
 }
 
 .admin_product-list {
     display: flex;
-    /* 设置为 flex 布局 */
-    flex-wrap: wrap;
-    /* 允许换行 */
-    justify-content: center;
-    /* 水平居中商品项 */
-    gap: 20px;
-    /* 商品项之间的间距 */
-    max-width: 100%;
-    /* 确保不超过父容器 */
-}
-
-.admin_product-item {
-    width: 200px;
-    /* 固定宽度 */
-    margin: 0;
-    /* 取消外边距 */
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    text-align: left;
-    background-color: #f9f9f9;
-}
-
-.admin_account-container {
-    width: 70%;
-    display: flex;
-    justify-content: center;
-    margin: 0 auto;
-    /* 水平居中 */
-    padding-top: 20px;
-}
-
-.admin_account-list {
-    display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    /* 控制账号项之间的间距 */
     justify-content: center;
+    /* 商品列表樣式 */
 }
 
+.admin_product-item,
 .admin_account-item {
     width: 200px;
-    /* 固定宽度 */
-    margin: 0 auto;
-    /* 水平居中每个账号项 */
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     text-align: left;
     background-color: #f9f9f9;
+    /* 單個管理項目樣式 */
 }
 
-/* 商品項目在不同螢幕寬度下的佈局 */
-@media (max-width: 768px) {
-    .admin_product-item {
-        flex: 0 0 45%;
-    }
-}
-
-@media (max-width: 480px) {
-    .admin_product-item {
-        flex: 0 0 100%;
-    }
-}
-
-.admin_add-product,
-.admin_add-account,
-.admin_footer-info {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-.admin_add-button {
-    width: auto;
-    max-width: 100%;
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.3s;
-    white-space: nowrap;
-    margin: 0 auto;
-    /* 水平居中 */
-    display: block;
-    /* 转为块级元素 */
-}
-
-.admin_add-button:hover {
-    background-color: #45a049;
-}
-
-
-/* 編輯和刪除按鈕 */
-
+/* 編輯和刪除按鈕樣式 */
 .admin_button-group {
     display: flex;
     gap: 5px;
-    /* 按钮之间的间距 */
     justify-content: center;
-    /* 水平居中 */
-}
-
-.admin_form {
-    background-color: transparent;
-    padding: 0;
-    margin: 0;
-    border: none;
-    box-shadow: none;
-}
-
-.admin_edit-button,
-.admin_delete-button {
-    width: auto;
-    padding: 8px 12px;
-    font-size: 14px;
-    border-radius: 5px;
-    border: none;
-    outline: none;
-    /* 移除按下時的白色邊框 */
-    cursor: pointer;
-    font-weight: bold;
-    color: white;
 }
 
 .admin_edit-button {
@@ -410,107 +309,8 @@ label {
     background-color: #f44336;
 }
 
-.admin_edit-button:hover {
-    background-color: #45a049;
-}
-
+.admin_edit-button:hover,
 .admin_delete-button:hover {
-    background-color: #d32f2f;
-}
-
-.admin_logout-container {
-    display: flex;
-    justify-content: center;
-    margin: 80px 0;
-}
-
-.admin_logout-button {
-    display: inline-block;
-    padding: 15px 25px;
-    background-color: #f44336;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 25px;
-    transition: background-color 0.3s;
-}
-
-.admin_logout-button:hover {
-    background-color: #d32f2f;
-}
-
-/*=================================================*/
-
-/* admin_login.html */
-.admin_login_error-message {
-    text-align: center;
-    /* 將文字水平居中 */
-    color: red;
-    /* 錯誤訊息顏色 */
-    margin-top: 10px;
-    /* 供與其他元素的距離 */
-    font-size: 40px;
-    /* 設置字體大小 */
-    font-weight: bold;
-    /* 設置字體為粗體 */
-}
-
-.admin_login_button {
-    width: auto;
-    max-width: 100%;
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.3s;
-    white-space: nowrap;
-    margin: 0 auto;
-    /* 水平居中 */
-    display: block;
-    /* 转为块级元素 */
-}
-
-/*=================================================*/
-
-.edit_account_button {
-    width: auto;
-    max-width: 100%;
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.3s;
-    white-space: nowrap;
-    margin: 0 auto;
-    /* 水平居中 */
-    display: block;
-    /* 转为块级元素 */
-}
-
-/*=================================================*/
-
-.edit_product_button {
-    width: auto;
-    max-width: 100%;
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.3s;
-    white-space: nowrap;
-    margin: 0 auto;
-    /* 水平居中 */
-    display: block;
-    /* 转为块级元素 */
+    background-color: #45a049;
+    /* 按鈕懸停效果 */
 }
