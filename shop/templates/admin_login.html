@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <!-- header -->
+    {% include "header.html" %}
+
+    <!-- main -->
+    <main class="login-container">
+        <div class="login-box">
+            <h2>Admin Login</h2>
+            <form method="post" action="{% url 'admin_login' %}">
+                {% csrf_token %}
+                <label for="acc_name">Account Name:</label>
+                <input type="text" id="acc_name" name="acc_name" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <button class="admin_login_button" type="submit">Login</button>
+            </form>
+
+            {% if error_message %}
+            <p class="admin_login_error-message">{{ error_message }}</p>
+            {% endif %}
+        </div>
+    </main>
+
+    <!-- footer -->
+    {% include "footer.html" %}
+</body>
+
+</html>

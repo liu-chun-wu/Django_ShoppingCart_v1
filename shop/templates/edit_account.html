@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>編輯帳號</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <!-- header -->
+    {% include "header.html" %}
+
+    <!-- main -->
+    <main>
+        <h1>編輯帳號</h1>
+        <form method="POST" action="{% url 'edit_account' account.id %}">
+            {% csrf_token %}
+            <label for="acc_name">帳號名稱:</label>
+            <input type="text" id="acc_name" name="acc_name" value="{{ account.acc_name }}" required>
+
+            <label for="password">密碼:</label>
+            <input type="password" id="password" name="password" value="{{ account.password }}" required>
+
+            <button class="edit_account_button" type="submit">更新帳號</button>
+        </form>
+    </main>
+
+    <!-- footer -->
+    {% include "footer.html" %}
+</body>
+
+</html>

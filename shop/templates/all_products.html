@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>所有商品</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <!-- Header -->
+    {% include "header.html" %}
+
+    <!-- Main Content -->
+    <main>
+        <div class="all_products_product-list">
+            {% for product in products %}
+            <!-- 當某商品的數量為0時，不要顯示在這個頁面上 -->
+            {% if product.product_quantity > 0 %}
+            <div class="all_products_product-item">
+                <h2 class="all_products_h2">{{ product.product_name }}</h2>
+                <p><strong>介紹:</strong> {{ product.introduction }}</p>
+                <p><strong>數量:</strong> {{ product.product_quantity }}</p>
+                <p><strong>價格:</strong> ${{ product.product_price }}</p>
+
+                <label for="quantity_{{ product.id }}" class="all_products_label">選擇數量:</label>
+                <input type="number" id="quantity_{{ product.id }}" min="1" max="{{ product.product_quantity }}"
+                    value="1">
+                <button class="all_products_button"
+                    onclick="addToCart('{{ product.product_name }}', '{{ product.introduction }}', '{{ product.product_quantity }}', '{{ product.product_price }}', document.getElementById('quantity_{{ product.id }}').value)">加入購物車
+                </button>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </main>
+
+    <!-- Footer -->
+    {% include "footer.html" %}
+
+    <!-- script -->
+    <script>
+        function addToCart(name, introduction, availableQuantity, price, selectedQuantity) {
+            selectedQuantity = parseInt(selectedQuantity);
+
+            // 確認現有的選擇不超過庫存
+            const existingProducts = getCookie("selectedProducts") || [];
+            const existingProductIndex = existingProducts.findIndex(product => product.name === name);
+
+            let totalQuantityInCart = selectedQuantity; // 預設為目前新增的數量
+
+            if (existingProductIndex !== -1) {
+                // 若商品已存在於購物車中，則將已存在的數量與新選的數量相加
+                totalQuantityInCart += parseInt(existingProducts[existingProductIndex].quantity);
+            }
+
+            // 檢查總數量是否超過庫存
+            if (totalQuantityInCart > availableQuantity) {
+                alert(`您選擇的數量 (${selectedQuantity}) 加上已在購物車中的數量 (${existingProducts[existingProductIndex] ? existingProducts[existingProductIndex].quantity : 0}) 超過庫存數量 (${availableQuantity})！`);
+                return;
+            }
+
+            // 更新或新增商品到購物車
+            if (existingProductIndex !== -1) {
+                existingProducts[existingProductIndex].quantity = totalQuantityInCart; // 更新數量
+            } else {
+                const productInfo = {
+                    name: name,
+                    introduction: introduction,
+                    quantity: selectedQuantity,
+                    price: price,
+                    availableQuantity: availableQuantity
+                };
+                existingProducts.push(productInfo);
+            }
+
+            document.cookie = `selectedProducts=${JSON.stringify(existingProducts)}; path=/;`;
+            alert(`商品 "${name}" 已經被選中，總數量為 ${totalQuantityInCart} ，已儲存到購物車中！`);
+        }
+
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) {
+                const cookieValue = parts.pop().split(';').shift();
+                try {
+                    return JSON.parse(cookieValue);
+                } catch (e) {
+                    return [];
+                }
+            }
+            return [];
+        }
+
+        const selectedProducts = getCookie("selectedProducts");
+        if (selectedProducts.length > 0) {
+            console.log("選中的商品資訊:", selectedProducts);
+        }
+    </script>
+
+</body>
+
+</html>
