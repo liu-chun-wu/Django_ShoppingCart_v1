@@ -40,10 +40,10 @@
 
                     <!-- 編輯和刪除按鈕 -->
                     <div class="admin_button-group">
-                        <form class="admin_form" method="get" action="{% url 'edit_product' product.id %}">
+                        <form class="admin_button_form" method="get" action="{% url 'edit_product' product.id %}">
                             <button type="submit" class="admin_edit-button">編輯</button>
                         </form>
-                        <form class="admin_form" method="post" action="{% url 'delete_product' product.id %}">
+                        <form class="admin_button_form" method="post" action="{% url 'delete_product' product.id %}">
                             {% csrf_token %}
                             <button type="submit" class="admin_delete-button" onclick="return confirm('確定要刪除這個商品嗎？');">
                                 刪除
@@ -58,7 +58,7 @@
         <!-- 新增商品表單 -->
         <section class="admin_add-product">
             <h2>新增商品</h2>
-            <form method="post" action="{% url 'add_product' %}">
+            <form class="admin_add_form" method="post" action="{% url 'add_product' %}">
                 {% csrf_token %}
 
                 <label for="product_name">商品名稱</label>
@@ -93,10 +93,10 @@
 
                     <!-- 編輯和刪除按鈕 -->
                     <div class="admin_button-group">
-                        <form class="admin_form" method="get" action="{% url 'edit_account' account.id %}">
+                        <form class="admin_button_form" method="get" action="{% url 'edit_account' account.id %}">
                             <button type="submit" class="admin_edit-button">編輯</button>
                         </form>
-                        <form class="admin_form" method="post" action="{% url 'delete_account' account.id %}">
+                        <form class="admin_button_form" method="post" action="{% url 'delete_account' account.id %}">
                             {% csrf_token %}
                             <button type="submit" class="admin_delete-button" onclick="return confirm('確定要刪除這個帳號嗎？');">
                                 刪除
@@ -111,7 +111,7 @@
         <!-- 新增管理員帳號表單 -->
         <section class="admin_add-account">
             <h2>新增管理員帳號</h2>
-            <form method="post" action="{% url 'add_account' %}">
+            <form class="admin_add_form" method="post" action="{% url 'add_account' %}">
                 {% csrf_token %}
 
                 <label for="acc_name">帳號名稱</label>
@@ -127,7 +127,7 @@
         <!-- Footer 資訊編輯區域 -->
         <section class="admin_footer-info">
             <h2>Footer 資訊</h2>
-            <form method="post" action="{% url 'edit_footer' %}">
+            <form class="admin_add_form" method="post" action="{% url 'edit_footer' %}">
                 {% csrf_token %}
 
                 <label for="about_us">關於我們</label>

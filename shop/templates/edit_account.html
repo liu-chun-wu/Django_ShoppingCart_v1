@@ -16,7 +16,7 @@
     <!-- main -->
     <main>
         <h1>編輯帳號</h1>
-        <form method="POST" action="{% url 'edit_account' account.id %}">
+        <form class="edit_account_form" method="POST" action="{% url 'edit_account' account.id %}">
             {% csrf_token %}
             <label for="acc_name">帳號名稱:</label>
             <input type="text" id="acc_name" name="acc_name" value="{{ account.acc_name }}" required>

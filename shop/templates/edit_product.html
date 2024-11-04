@@ -16,7 +16,7 @@
     <!-- main -->
     <main>
         <h1>Edit Product</h1>
-        <form method="POST" action="{% url 'edit_product' product.id %}">
+        <form class="edit_product_form" method="POST" action="{% url 'edit_product' product.id %}">
             {% csrf_token %}
             <label for="product_name">商品名稱:</label>
             <input type="text" id="product_name" name="product_name" value="{{ product.product_name }}" required>
