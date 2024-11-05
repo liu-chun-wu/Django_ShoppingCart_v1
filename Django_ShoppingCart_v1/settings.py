@@ -50,7 +50,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'Network_Database_midterm_project.urls'
+ROOT_URLCONF = 'Django_ShoppingCart_v1.urls'
 
 TEMPLATES = [
     {
@@ -68,7 +68,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'Network_Database_midterm_project.wsgi.application'
+WSGI_APPLICATION = 'Django_ShoppingCart_v1.wsgi.application'
 
 
 # Database
